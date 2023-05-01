@@ -115,18 +115,6 @@ buttons.forEach(button => {
           textarea.value += event.target.innerText.slice(1)
         }
       }
-      case "Enter": {
-        textarea.value = textarea.value + "\n";
-        break;
-      }
-      case "Tab": {
-        textarea.value = textarea.value + "  ";
-        break;
-      }
-      case "Delete": {
-        textarea.value = textarea.value.slice(textarea.value.length, textarea.value.length - 1);
-        break;
-      }
     }
   });
 });
@@ -134,6 +122,8 @@ buttons.forEach(button => {
 document.addEventListener('keydown', (event) => {
   let key;
   let button;
+
+  console.log(event.key)
 
   if (!containsNumbers(event.key)) {
     key = event.key.toUpperCase()
@@ -171,7 +161,11 @@ document.addEventListener('keydown', (event) => {
       break;
     }
     case "Delete": {
-      textarea.value = textarea.value.slice(textarea.value.length, textarea.value.length - 1);
+      textarea.value.length = textarea.value.slice(textarea.value.length, textarea.value.length - 1);
+      break;
+    }
+    case "CapsLock": {
+      key = event.key.toUpperCase()
       break;
     }
   }

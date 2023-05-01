@@ -1,3 +1,7 @@
+const containsNumbers = (string) => {
+  return /\d/.test(string);
+}
+
 export const BUTTONS = [
   { id: 1, content: "`", dopContent: "~", type: "alt" },
   { id: 2, content: "1", dopContent: "!", type: "number" },
@@ -27,7 +31,7 @@ export const BUTTONS = [
   { id: 26, content: "[", dopContent: "", type: "number" },
   { id: 27, content: "]", dopContent: "", type: "number" },
   { id: 28, content: "\\", dopContent: "/", type: "number" },
-  { id: 29, content: "DEL", dopContent: "", type: "tab" },
+  { id: 29, content: "DEL", dopContent: "", type: "del" },
   { id: 30, content: "Caps Lock", dopContent: "", type: "backspace" },
   { id: 31, content: "A", dopContent: "", type: "number" },
   { id: 32, content: "S", dopContent: "", type: "number" },
@@ -82,11 +86,95 @@ const insertButtons = (array) => {
   array.forEach(({ id, type, content, dopContent }) => {
     keyboard.insertAdjacentHTML(
       "beforeend",
-      `<button id=${id} class=${type}><p class="dop-content">${dopContent}</p><p class="content">${content}</p></button>`
+      `<button id=${id} class=${type}><p class="content">${dopContent}</p>${content}</button>`
     );
   });
 };
 
 insertButtons(BUTTONS);
 
+const buttons = [...document.getElementsByTagName("button")];
+
+buttons.forEach(button => {
+  button.addEventListener("click", (event) => {
+    event.target.classList.add('active')
+
+    setTimeout(() => {
+      event.target.classList.remove('active')
+    }, 200);
+
+    switch (event.target.innerText) {
+      case "Backspace": {
+        textarea.value = textarea.value.slice(0, -1);
+        break;
+      }
+      default: {
+        if (!containsNumbers(event.target.innerText)) {
+          textarea.value += event.target.innerText
+        } else {
+          textarea.value += event.target.innerText.slice(1)
+        }
+      }
+      case "Enter": {
+        textarea.value = textarea.value + "\n";
+        break;
+      }
+      case "Tab": {
+        textarea.value = textarea.value + "  ";
+        break;
+      }
+      case "Delete": {
+        textarea.value = textarea.value.slice(textarea.value.length, textarea.value.length - 1);
+        break;
+      }
+    }
+  });
+});
+
+document.addEventListener('keydown', (event) => {
+  let key;
+  let button;
+
+  if (!containsNumbers(event.key)) {
+    key = event.key.toUpperCase()
+    button = buttons.find(btn => btn.textContent === key);
+  } else if ((!containsNumbers(event.key)) && (event.key.length > 1)) {
+    key = event.key;
+    button = buttons.find(btn => btn.textContent.slice(1) === key);
+  } else {
+    key = event.key
+    button = buttons.find(btn => btn.textContent.slice(1) === key);
+  }
+
+  if (button) {
+    button.classList.add('active');
+    setTimeout(() => {
+      button.classList.remove('active')
+    }, 200);
+  }
+
+  switch (event.key) {
+    case "Backspace": {
+      textarea.value = textarea.value.slice(0, -1);
+      break;
+    }
+    default: {
+      textarea.value += event.key
+      break;
+    }
+    case "Tab": {
+      textarea.value = textarea.value + "  ";
+      break;
+    }
+    case "Enter": {
+      textarea.value = textarea.value + "\n";
+      break;
+    }
+    case "Delete": {
+      textarea.value = textarea.value.slice(textarea.value.length, textarea.value.length - 1);
+      break;
+    }
+  }
+}
+);
 

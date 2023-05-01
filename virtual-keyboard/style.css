@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   height: 100%;
@@ -34,6 +39,7 @@ body {
   color: gray;
   background-color: rgb(58, 53, 53);
   border-radius: 5px;
+  position: relative;
 }
 
 .ctrl {
@@ -60,12 +66,21 @@ body {
   border-radius: 5px;
 }
 
+.del {
+  height: 50px;
+  width: 70px;
+  color: gray;
+  background-color: rgb(58, 53, 53);
+  border-radius: 5px;
+}
+
 .number {
   height: 50px;
   width: 50px;
   border-radius: 5px;
   color: white;
   background-color: rgb(91, 89, 89);
+  position: relative;
 }
 
 .space {
@@ -84,12 +99,40 @@ body {
   border-radius: 5px;
 }
 
-.dop-content {
-  position: absolute;
-  font-size: 10px;
-}
-
 .content {
-  font-size: 15px;
+  left: 5px;
+  position: absolute;
+  top: 0;
 }
 
+.number.active {
+  background-color: bisque;
+}
+
+.tab.active {
+  background-color: bisque;
+}
+
+.backspace.active {
+  background-color: bisque;
+}
+
+.enter.active {
+  background-color: bisque;
+}
+
+.space.active {
+  background-color: bisque;
+}
+
+.ctrl.active {
+  background-color: bisque;
+}
+
+.alt.active {
+  background-color: bisque;
+}
+
+.del.active {
+  background-color: bisque;
+}

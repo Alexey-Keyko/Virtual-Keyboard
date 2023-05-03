@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.text {
+  height: 250px;
+  width: 95%;
+  margin-bottom: 5px;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 350px;
+  width: 1000px;
+  gap: 10px;
+}
+
+.alt {
+  height: 50px;
+  width: 50px;
+  color: gray;
+  background-color: rgb(58, 53, 53);
+  border-radius: 5px;
+  position: relative;
+}
+
+.ctrl {
+  height: 50px;
+  width: 75px;
+  color: gray;
+  background-color: rgb(58, 53, 53);
+  border-radius: 5px;
+}
+
+.enter {
+  height: 50px;
+  width: 110px;
+  color: gray;
+  background-color: rgb(58, 53, 53);
+  border-radius: 5px;
+}
+
+.tab {
+  height: 50px;
+  width: 70px;
+  color: gray;
+  background-color: rgb(58, 53, 53);
+  border-radius: 5px;
+}
+
+.del {
+  height: 50px;
+  width: 70px;
+  color: gray;
+  background-color: rgb(58, 53, 53);
+  border-radius: 5px;
+}
+
+.number {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(91, 89, 89);
+  position: relative;
+}
+
+.space {
+  height: 50px;
+  width: 400px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(91, 89, 89);
+}
+
+.backspace {
+  height: 50px;
+  width: 150px;
+  color: gray;
+  background-color: rgb(58, 53, 53);
+  border-radius: 5px;
+}
+
+.content {
+  left: 5px;
+  position: absolute;
+  top: 0;
+}
+
+.number.active {
+  background-color: bisque;
+}
+
+.tab.active {
+  background-color: bisque;
+}
+
+.backspace.active {
+  background-color: bisque;
+}
+
+.enter.active {
+  background-color: bisque;
+}
+
+.space.active {
+  background-color: bisque;
+}
+
+.ctrl.active {
+  background-color: bisque;
+}
+
+.alt.active {
+  background-color: bisque;
+}
+
+.del.active {
+  background-color: bisque;
+}
